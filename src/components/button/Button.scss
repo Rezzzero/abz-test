@@ -1,0 +1,25 @@
+@use "../../styles//variables" as var;
+
+.normal {
+  background-color: var.$primary-color;
+  border: none;
+  border-radius: 80px;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0.5rem 19.55px;
+  min-width: 100px;
+  max-width: 120px;
+  color: black;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffe302;
+  }
+}
+
+.disabled {
+  background-color: #b4b4b4;
+  color: white;
+  pointer-events: none;
+  opacity: 0.5;
+}

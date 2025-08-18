@@ -1,0 +1,9 @@
+$primary-color: #f4e041;
+$secondary-color: #00bdd3;
+$bg-color: #f8f8f8;
+
+:export {
+  primary-color: $primary-color;
+  secondary-color: $secondary-color;
+  bg-color: $bg-color;
+}

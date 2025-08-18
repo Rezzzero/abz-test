@@ -1,0 +1,29 @@
+.card {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 20px;
+
+  &__img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    &-text {
+      margin: 0;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
+}
