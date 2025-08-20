@@ -6,3 +6,10 @@ export interface UserCardProps {
   phone: string;
   position: string;
 }
+
+export interface NewUser {
+  name: string;
+  email: string;
+  phone: string;
+  position: string;
+}

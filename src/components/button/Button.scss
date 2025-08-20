@@ -1,7 +1,6 @@
 @use "../../styles//variables" as var;
 
-.normal {
-  background-color: var.$primary-color;
+.button {
   border: none;
   border-radius: 80px;
   font-size: 16px;
@@ -9,8 +8,12 @@
   padding: 0.5rem 19.55px;
   min-width: 100px;
   max-width: 120px;
-  color: black;
   cursor: pointer;
+}
+
+.normal {
+  background-color: var.$primary-color;
+  color: black;
 
   &:hover {
     background-color: #ffe302;

@@ -4,6 +4,7 @@ import { IntroSection } from "./components/intro-section/IntroSection";
 import { UserList } from "./components/list/UserList";
 import { Navbar } from "./components/navigation/Navbar";
 import axios from "axios";
+import { RegForm } from "./components/form/RegForm";
 
 function App() {
   const [token, setToken] = useState<string>("");
@@ -40,6 +41,7 @@ function App() {
       <div className="content">
         <IntroSection />
         <UserList token={token} />
+        <RegForm />
       </div>
     </>
   );

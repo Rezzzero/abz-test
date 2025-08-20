@@ -15,7 +15,7 @@ export const Button = ({
     <button
       onClick={onClick}
       type={type}
-      className={`${isDisabled ? "disabled" : "normal"}`}
+      className={`button ${isDisabled ? "disabled" : "normal"}`}
     >
       {text}
     </button>
