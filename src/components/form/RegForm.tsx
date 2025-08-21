@@ -42,8 +42,8 @@ export const RegForm = () => {
 
   return (
     <form className="form container">
-      <h1 className="user-list__title">Working with GET request</h1>
-      <div>
+      <h1 className="user-list__title">Working with POST request</h1>
+      <div className="form__inputs">
         <Input
           type="text"
           id="name"
@@ -54,28 +54,31 @@ export const RegForm = () => {
             onChange: createOnChange("name"),
             onBlur: createOnBlur("name"),
           })}
+          value={watch("name")}
         />
         <Input
           type="text"
           id="email"
           error={errors.email}
-          placeholder="Your email"
+          placeholder="Email"
           register={register("email", {
             required: "Email is required",
             onChange: createOnChange("email"),
             onBlur: createOnBlur("email"),
           })}
+          value={watch("email")}
         />
         <Input
           type="text"
           id="phone"
           error={errors.phone}
-          placeholder="Your phone"
+          placeholder="Phone"
           register={register("phone", {
             required: "Phone is required",
             onChange: createOnChange("phone"),
             onBlur: createOnBlur("phone"),
           })}
+          value={watch("phone")}
         />
         <SelectPosition />
       </div>
