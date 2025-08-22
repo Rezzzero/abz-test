@@ -1,0 +1,40 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  .select-button {
+    display: flex;
+    background-color: transparent;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    border: none;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+
+    &__icon {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #d0cfcf;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.active {
+        border: 1px solid #00bdd3;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #00bdd3;
+        }
+      }
+    }
+  }
+}

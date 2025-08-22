@@ -12,7 +12,7 @@ type FormValues = {
   name: string;
   email: string;
   phone: string;
-  position: string;
+  position: number;
 };
 
 export const RegForm = () => {
@@ -37,7 +37,14 @@ export const RegForm = () => {
   const createOnBlur = (field: keyof NewUser) => async () => {
     setNewUserBlur((prev) => ({ ...prev, [field]: true }));
 
-    await trigger(field);
+    if (watch(field)) {
+      await trigger(field);
+    }
+  };
+
+  const onSelect = (id: number) => {
+    setValue("position", id);
+    clearErrors("position");
   };
 
   return (
@@ -51,6 +58,11 @@ export const RegForm = () => {
           placeholder="Your name"
           register={register("name", {
             required: "Name is required",
+            pattern: {
+              value:
+                /^[a-zA-Zа-яА-Я]{2,}(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+              message: "The name must be at least 2 characters.",
+            },
             onChange: createOnChange("name"),
             onBlur: createOnBlur("name"),
           })}
@@ -63,6 +75,10 @@ export const RegForm = () => {
           placeholder="Email"
           register={register("email", {
             required: "Email is required",
+            pattern: {
+              value: /^\S+@\S+\.\S+$/,
+              message: "Invalid email format",
+            },
             onChange: createOnChange("email"),
             onBlur: createOnBlur("email"),
           })}
@@ -75,12 +91,19 @@ export const RegForm = () => {
           placeholder="Phone"
           register={register("phone", {
             required: "Phone is required",
+            pattern: {
+              value: /^\+380\d{9}$/,
+              message: "Invalid phone format",
+            },
             onChange: createOnChange("phone"),
             onBlur: createOnBlur("phone"),
           })}
           value={watch("phone")}
+          helperMessage="+38 (XXX) XXX - XX - XX"
         />
-        <SelectPosition />
+        <SelectPosition onSelect={onSelect} value={watch("position")} />
+
+        <input type="file" accept="image/jpeg, image/jpg" />
       </div>
       <Button
         text="Sign up"

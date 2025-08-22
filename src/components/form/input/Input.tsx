@@ -8,6 +8,7 @@ type InputProps = {
   placeholder: string;
   register: UseFormRegisterReturn;
   value: string;
+  helperMessage?: string;
 };
 
 export const Input = ({
@@ -17,6 +18,7 @@ export const Input = ({
   placeholder,
   register,
   value,
+  helperMessage,
 }: InputProps) => {
   const isInputEmpty = value === "";
   return (
@@ -36,6 +38,12 @@ export const Input = ({
         {...register}
         className={`input ${error ? "input__error" : ""}`}
       />
+      <span className="input__message-container">
+        {error && <p className="input__error-message">{error.message}</p>}
+        {helperMessage && !error && (
+          <p className="input__helper-message">{helperMessage}</p>
+        )}
+      </span>
     </div>
   );
 };
