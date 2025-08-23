@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../styles/_globals.scss";
 import { Button } from "../button/Button";
 import "./RegForm.scss";
@@ -54,6 +54,10 @@ export const RegForm = () => {
   const onSubmit = (data: FormValues) => {
     console.log(data);
   };
+
+  useEffect(() => {
+    register("position", { required: "Position is required" });
+  }, [register]);
 
   return (
     <form className="form container" onSubmit={handleSubmit(onSubmit)}>
@@ -112,7 +116,6 @@ export const RegForm = () => {
         <SelectPosition
           onSelect={onSelect}
           value={watch("position")}
-          register={register("position", { required: "Position is required" })}
           error={errors.position}
         />
         <FileInput
