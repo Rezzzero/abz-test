@@ -1,9 +1,13 @@
 $primary-color: #f4e041;
 $secondary-color: #00bdd3;
 $bg-color: #f8f8f8;
+$error-color: #cb3d40;
+$border-color: #d0cfcf;
 
 :export {
   primary-color: $primary-color;
   secondary-color: $secondary-color;
   bg-color: $bg-color;
+  error-color: $error-color;
+  border-color: $border-color;
 }

@@ -7,12 +7,14 @@ import type { NewUser } from "../list/types";
 import { initialNewUserBlur } from "./states/user";
 import { Input } from "./input/Input";
 import { SelectPosition } from "./select/SelectPosition";
+import { FileInput } from "./file-input/FileInput";
 
 type FormValues = {
   name: string;
   email: string;
   phone: string;
   position: number;
+  photo: FileList;
 };
 
 export const RegForm = () => {
@@ -20,13 +22,15 @@ export const RegForm = () => {
     register,
     trigger,
     setValue,
+    handleSubmit,
     watch,
     control,
     clearErrors,
-    formState: { errors },
-  } = useForm<FormValues>();
+    formState: { errors, isValid },
+  } = useForm<FormValues>({
+    mode: "onChange",
+  });
   const [newUserBlur, setNewUserBlur] = useState(initialNewUserBlur);
-  const [isDisabled, setIsDisabled] = useState(true);
 
   const createOnChange = (field: keyof NewUser) => () => {
     if (newUserBlur[field]) {
@@ -47,8 +51,12 @@ export const RegForm = () => {
     clearErrors("position");
   };
 
+  const onSubmit = (data: FormValues) => {
+    console.log(data);
+  };
+
   return (
-    <form className="form container">
+    <form className="form container" onSubmit={handleSubmit(onSubmit)}>
       <h1 className="user-list__title">Working with POST request</h1>
       <div className="form__inputs">
         <Input
@@ -101,16 +109,27 @@ export const RegForm = () => {
           value={watch("phone")}
           helperMessage="+38 (XXX) XXX - XX - XX"
         />
-        <SelectPosition onSelect={onSelect} value={watch("position")} />
-
-        <input type="file" accept="image/jpeg, image/jpg" />
+        <SelectPosition
+          onSelect={onSelect}
+          value={watch("position")}
+          register={register("position", { required: "Position is required" })}
+          error={errors.position}
+        />
+        <FileInput
+          register={register("photo", {
+            required: "Photo is required",
+            validate: {
+              lessThan5MB: (files) =>
+                files[0]?.size < 5 * 1024 * 1024 || "File size must be < 5MB",
+              isJpg: (files) =>
+                ["image/jpeg", "image/jpg"].includes(files[0]?.type) ||
+                "Only JPG/JPEG allowed",
+            },
+          })}
+          error={errors.photo}
+        />
       </div>
-      <Button
-        text="Sign up"
-        isDisabled={isDisabled}
-        onClick={() => {}}
-        type={"submit"}
-      />
+      <Button text="Sign up" isDisabled={!isValid} type="submit" />
     </form>
   );
 };

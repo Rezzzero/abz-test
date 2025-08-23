@@ -1,0 +1,60 @@
+@use "../../../styles/variables" as var;
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .upload-button-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .upload-button {
+      background-color: transparent;
+      border: 1px solid black;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      padding: 13px 15px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+      cursor: pointer;
+
+      &-error {
+        border: 1px solid var.$error-color;
+      }
+    }
+
+    .upload-text {
+      width: 100%;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+      color: #7e7e7e;
+      margin: 0;
+      padding: 13px 15px;
+      border-top: 1px solid var.$border-color;
+      border-right: 1px solid var.$border-color;
+      border-bottom: 1px solid var.$border-color;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+
+      &-error {
+        border-top: 1px solid var.$error-color;
+        border-right: 1px solid var.$error-color;
+        border-bottom: 1px solid var.$error-color;
+      }
+    }
+  }
+}
+
+.error-message {
+  margin-top: 4px;
+  margin-left: 16px;
+  margin-bottom: 0;
+  color: var.$error-color;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}

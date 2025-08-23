@@ -1,4 +1,5 @@
 import "./SelectPosition.scss";
+import type { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
 const positions = [
   { id: 1, name: "Lawyer" },
@@ -10,14 +11,18 @@ const positions = [
 export const SelectPosition = ({
   onSelect,
   value,
+  register,
+  error,
 }: {
   onSelect: (id: number) => void;
   value: number;
+  register: UseFormRegisterReturn;
+  error: FieldError | undefined;
 }) => {
   return (
     <div>
       <p>Select your position</p>
-      <div className="button-container">
+      <div className="select-button-container">
         {positions.map((position) => (
           <button
             key={position.id}
@@ -34,6 +39,7 @@ export const SelectPosition = ({
           </button>
         ))}
       </div>
+      {error && <p className="select-error-message">{error.message}</p>}
     </div>
   );
 };

@@ -1,9 +1,11 @@
+@use "../../../styles/variables" as var;
+
 .input__container {
   position: relative;
 
   &:focus-within {
     .input__label {
-      background-color: #f8f8f8;
+      background-color: var.$bg-color;
       left: 12px;
       top: -8px;
       font-size: 12px;
@@ -15,7 +17,7 @@
 
 .input {
   width: 100%;
-  border: 1px solid #d0cfcf;
+  border: 1px solid var.$border-color;
   border-radius: 4px;
   min-width: 328px;
   padding: 13px 16px;
@@ -30,7 +32,7 @@
 
   &:focus {
     outline: none;
-    border-color: #d0cfcf;
+    border-color: var.$border-color;
     box-shadow: none;
   }
 
@@ -39,10 +41,10 @@
   }
 
   &__error {
-    border: 2px solid #cb3d40;
+    border: 2px solid var.$error-color;
 
     &:focus {
-      border: 2px solid #cb3d40;
+      border: 2px solid var.$error-color;
       box-shadow: none;
     }
   }
@@ -69,7 +71,7 @@
   }
 
   &--active {
-    background-color: #f8f8f8;
+    background-color: var.$bg-color;
     left: 12px;
     top: -8px;
     font-size: 12px;
@@ -83,7 +85,7 @@
     margin-top: 4px;
     margin-left: 16px;
     margin-bottom: 0;
-    color: #cb3d40;
+    color: var.$error-color;
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;

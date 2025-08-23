@@ -7,7 +7,7 @@ export const Button = ({
   isDisabled,
 }: {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
   type: "button" | "submit";
   isDisabled?: boolean;
 }) => {
@@ -15,6 +15,7 @@ export const Button = ({
     <button
       onClick={onClick}
       type={type}
+      disabled={isDisabled}
       className={`button ${isDisabled ? "disabled" : "normal"}`}
     >
       {text}
