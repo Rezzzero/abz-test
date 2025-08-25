@@ -1,5 +1,5 @@
 import "./SelectPosition.scss";
-import type { FieldError } from "react-hook-form";
+import type { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
 const positions = [
   { id: 1, name: "Lawyer" },
@@ -11,10 +11,12 @@ const positions = [
 export const SelectPosition = ({
   onSelect,
   value,
+  register,
   error,
 }: {
   onSelect: (id: number) => void;
   value: number;
+  register: UseFormRegisterReturn;
   error: FieldError | undefined;
 }) => {
   return (

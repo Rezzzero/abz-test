@@ -60,8 +60,11 @@ export const UserList = ({ token }: { token: string }) => {
   }, [page, token, fetchUsers]);
 
   const handleShowMore = () => {
+    if (!data) return;
     setShowCount((prev) => prev + 6);
-    setPage((prev) => prev + 1);
+    if (page < data.total_pages) {
+      setPage((prev) => prev + 1);
+    }
   };
 
   return (
@@ -74,7 +77,13 @@ export const UserList = ({ token }: { token: string }) => {
 
         {loading && <p className="user-list__loading">Loading...</p>}
       </div>
-      <Button text="Show more" type="button" onClick={() => handleShowMore()} />
+      {data && data?.total_users > showCount && (
+        <Button
+          text="Show more"
+          type="button"
+          onClick={() => handleShowMore()}
+        />
+      )}
     </div>
   );
 };
